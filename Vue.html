@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="first">
+        <p>{{message}}</p>
+        <input type="text" v-model="message"/>
+    </div>
+    <div id="second">
+        <ul>
+            <li v-for="i in array">
+                {{i.text}}
+            </li>
+        </ul>
+        <p v-bind:title="message">
+            悬停
+        </p>
+    </div>
+    <div id="third">
+        <div v-if="watch">
+            看的见的
+        </div>
+    </div>
+<script type="text/javascript">
+    new Vue({
+        el:"#first",
+        data:{
+            message:'你好 Vue',
+        }
+    })
+   var second = new Vue({
+        el:'#second',
+        data:{
+            array:[
+                {text:1},
+                {text:2},
+                {text:"love you"},
+            ],
+            message:new Date(),
+        }
+    });
+    var third = new Vue({
+        el:"#third",
+        data:{
+                watch: true,
+                }
+    })
+</script>
+</body>
+</html>

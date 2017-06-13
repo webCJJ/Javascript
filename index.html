@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>面向对象开发</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //对象字面量
+    var cricle = {
+        length :　23,
+        width  :  12
+    };
+    //数组字面量
+     var color = ['a','b','c'];
+     color[99]=1;
+    console.log(color[99]);
+    console.log(color instanceof  Array);
+    console.log(color.toString());
+    console.log(color.valueOf());
+
+    //
+    var person1 = {
+        toLocalString : function(){
+            return 'Chenjiajia';
+        },
+        toString : function(){
+            return "Chenjijia";
+        }
+    }
+    var person2 = {
+        toLocalString : function(){
+            return 'cjj';
+        },
+        toString : function(){
+            return 'cjj';
+        }
+    }
+    var people = [person1,person2];
+    console.log(people);
+</script>
+</body>
+</html>
