@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>对象属性及属性的读取</title>
+</head>
+<body>
+
+
+<script>
+     var book = {
+         _year : 2004, //下划线常用的记号，表示只能通过对象方法访问的属性
+         one   : 1
+     }
+    Object.defineProperty(book,"year",{
+        get : function(){
+            return this._year;
+        },
+        set : function(two){
+            if(two >this.one){
+                this._year = two;
+            }
+        }
+    })
+    book.year = 3;
+    console.log(book);
+
+    var tree = {};
+    Object.defineProperties(tree,{
+        _name : {
+            value :1,
+            enumerable:true,
+            configurable : true
+
+        },
+        age :{
+           value:5
+        },
+        name : {
+            set : function(){
+                return this._name;
+            },
+            get : function(age){
+                 this._name = age;
+            }
+        }
+
+    })
+
+    var description = Object.getOwnPropertyDescriptor(tree,"_name");
+    console.log(description.enumerable);
+    console.log(description);
+
+</script>
+</body>
+</html>

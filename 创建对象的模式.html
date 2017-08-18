@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数的创建及模式</title>
+</head>
+<body>
+
+
+<script>
+    //作为构造函数
+    function Person(name,age,addr){
+        this.name = name;
+        this.age = age;
+        this.addr = function(){
+            console.log(this.name);
+        }
+    }
+    var person1 = new Person("cjj","18","shanghai");
+    var person2 = new Person("spp","28",'wuhan');
+    var person3 = new Person("小西米",'0');
+
+    console.log(person1);
+    console.log(person2);
+    console.log(person3);
+
+    //作为普通函数
+    Person('小西米','0','``');
+    //window.name + ' '+ window.age);
+</script>
+</body>
+</html>
