@@ -10,7 +10,7 @@ function CjjValidate(e,reg,text){
 CjjValidate.prototype = {
     constructor : CjjValidate,
     CjjFocus : function(){
-
+        this.e.parentNode
     }
 
 }
