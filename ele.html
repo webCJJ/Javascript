@@ -171,6 +171,72 @@
     }
     // setTimeout(moven, 6000);                               // 在六秒后会执行这个函数 
 
+ // 在document中的一个指定的区域输出调试的消息 如果document不存在这样一个区域 则创建一个
+    function debug(msg) {
+        var log = document.getElementById('debuglog');         // 通过查看HTLM元素id属性来查找文档的调试部分 
+       
+        if(!log) {                                             // 如果这个元素不存在，则创建一个
+           log = document.createElement("div");                // 创建一个新的<div>元素
+           log.id = "debuglog";                                // 给这个元素的HTML id赋值
+           log.innerHTML = "<h1>Debug Log</h1>";               // 定义初始内容
+           document.body.appendChild(log);                     // 将其添加到文档的末尾
+        }
+        //将消息包装在<pre>中，并添加至log中
+        var pre = document.createElement('pre');               // 创建<pre>标签
+        var text = document.createTextNode(msg);               // 将msg包装在一个文本节点里
+        pre.appendChild(text);                                 // 将文本添加至<pre>
+        log.appendChild(pre);                                  // 将<pre>添加至log 
+    }
+    debug();     
+
+    // javascript 控制css样式
+    function hide(e, reflow) {                                 // 通过JavaScript操纵样式来隐藏元素e 
+        if(reflow) {                                           // 如果第二个参数是true
+            e.style.display = "none";                          // 隐藏这个元素，其所占的空间也随之消失
+        }
+        else {                                                 // 否则
+            e.style.visibility = "hidden";                     // 将e隐藏，但是保留其所占的空间
+        }
+    }
+    function highlight(e) {                                    // 通过设置CSS类来高亮显示e   
+        if(!e.className) e.className = 'hilite';
+        else e.className += "hilite"; 
+    }
+
+    // "load" 事件只有在文档加载完成后触发
+    // 通常需要等待load事件发生后才开始执行JavaScript代码
+    window.onload = function() {                               // 文档加载完成时执行这里的代码 
+        // 找到文档中所有的<img>标签
+        var images = document.getElementsByTagName("img");
+
+        // 遍历images, 给每个节点的"click"事件添加事件处理程序
+        // 点击图片的时候将图片隐藏
+        for(var i = 0; i < images.length; i++) {
+            var image = images[i];
+            if(image.addEventListener)                         // 注册事件处理程序的另一种方法
+               image.addEventListener("click", hide, false);
+            else                                               // 兼容IE8及以上版本
+               image.attachEvent("onclick", hide);           
+        }
+       function hide(event) {event.target.style.visibility = "hidden"; }
+    }
+
+    // Jquery 重写debug()
+    function debug(msg) { 
+        var log = $("#debuglog");                              // 找到要显示msg的元素   
+        if(log.length == 0) {                                  // 如果不存在则创建之  
+            log = $("<div id='debuglog'><h1>Debug Log</h1></div>");
+            log.appendTo(document.body);                       // 追加到body里
+        }
+        log.append($("<pre>").text(msg));                      // 将msg包装在<pre>中 再追加到log里 
+    }
+
 </script>
+
+    <button onclick="hide(this, true); debug('hide button 1')">hide1</button>
+    <button onclick="hide(this); debug('hide button 2')">hide2</button>
+
+    <img src="1.png">
+    <img src="2.png">
 </body>
 </html>
