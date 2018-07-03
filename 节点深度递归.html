@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>节点深度递归</title>
+</head>
+<body>
+<ul id="changeNode" style="width:100px;height: 100px">
+	<li class="cc">
+		<ul>
+			<li class="cc" style="width:1px;height: 1px;"></li>
+		</ul>
+	</li>
+	<li class="cc" style="width:2px;height: 2px;"></li>
+	<li class="cc">
+		<ul>
+			<li class="cc">
+				<ul>
+					<li class="cc"></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+<script type="text/javascript">
+   var ul = document.getElementById("changeNode");
+   changeClassName(ul)
+   function changeClassName(node){
+   	if(node){
+      // 对自己进行处理 
+      var styAtr = node.getAttribute("style");
+
+      // 对子节点遍历
+   		 var childNode = node.childNodes;
+         for(var i=0; i<childNode.length;i++){
+        	if(childNode[i].nodeType == 1){
+        		changeClassName(childNode[i])
+        	}
+        }
+   	}
+   }
+
+</script>
+</body>
+</html>
