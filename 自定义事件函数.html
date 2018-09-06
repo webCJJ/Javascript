@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自定义监听函数</title> 
+<style type="text/css"> 
+button{
+
+}
+ b {
+    display: block;
+    float: left;
+    width: 6px;
+    height: 6px;
+    border-radius: 8px;
+    background: #000;
+    margin: 0 2px;
+    margin-top: 5px;
+}
+
+</style> 
+
+</head> 
+<body> 
+	<div>
+		<button id="btn">btn</button>	
+	</div>
+
+
+<script type="text/javascript">
+	var btn = document.getElementById('btn');
+	btn.onclick = function(){
+		var b = document.createElement("b");
+	    document.body.appendChild(b)
+
+
+	}
+
+     
+ 
+</script>
+</body> 
+</html>
