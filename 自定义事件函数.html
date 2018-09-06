@@ -5,7 +5,6 @@
 <title>自定义监听函数</title> 
 <style type="text/css"> 
 button{
-
 }
  b {
     display: block;
@@ -17,7 +16,6 @@ button{
     margin: 0 2px;
     margin-top: 5px;
 }
-
 </style> 
 
 </head> 
@@ -27,17 +25,23 @@ button{
 	</div>
 
 
-<script type="text/javascript">
+<script type="text/javascript"> 
+    var ccc = "";
 	var btn = document.getElementById('btn');
 	btn.onclick = function(){
 		var b = document.createElement("b");
+        if(b){
+            ccc = b
+        }
+		initBAttribute();
+
 	    document.body.appendChild(b)
 
-
 	}
-
-     
- 
+	function initBAttribute(){
+		ccc.style.background = "red"
+	}
+    
 </script>
 </body> 
 </html>
